@@ -1,12 +1,12 @@
 pipeline{
     agent any
     tools{
-        maven 'Maven_HOME'
+        maven 'maven'
     }
     stages{
         stage('Checkout SCM'){
             steps{
-                git url: 'https://gitlab.com/123Balu42/Jenkins_Spring.git'
+                git url: 'https://github.com/falcon-18-tech/Jenkins_Spring.git'
             }
         }
         
@@ -24,7 +24,7 @@ pipeline{
         }
         post{
             failure{
-                mail to: '123balu42@gmail.com' from: '123balu42@gmail.com'
+                mail to: 'sonitgupta7@gmail.com' from: 'sonitgupta7@gmail.com'
                 Subject: "Project Build: ${env.JOB_NAME} - Failed"
                 body: "Job Failed - \ "${env.JOB_NAME}\" build: ${env.BUILD_NUMBER}
 
@@ -34,7 +34,7 @@ pipeline{
                 body: '''${SCRIPT, template="groovy-template"}''',
                 subject: "Project Build: ${env.JOB_NAME} - SUCCESS"
                 mimeType: 'text/html'
-                to: 123balu42@gmail.com
+                to: sonitgupta7@gmail.com
 
             }
         }
