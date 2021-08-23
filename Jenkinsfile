@@ -21,4 +21,19 @@ pipeline{
             }
 	}
     }
+	post{
+             success{
+                    emailext attachPattern: "*target/*.war",
+                    body: '''${SCRIPT, template="groovy-template"}''',
+                    subject: "Project Build: ${env.JOB_NAME} - SUCCESS"
+                    mimeType: 'text/html'
+                    to: 'sonitgupta7@gmail.com'
+            }
+            failure{
+                    mail to: 'sonitgupta7@gmail.com' 
+                    from: 'sonitgupta7@gmail.com'
+                    Subject: "Project Build: ${env.JOB_NAME} - Failed"
+                    body: "Job Failed -  ${env.JOB_NAME}" build: ${env.BUILD_NUMBER}
+            }       
+        }
 }
