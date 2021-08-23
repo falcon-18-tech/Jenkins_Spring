@@ -25,7 +25,7 @@ pipeline{
                     body: '''${SCRIPT, template="groovy-template"}''',
                     subject: "Project Build: ${env.JOB_NAME} - SUCCESS"
                     mimeType: 'text/html'
-                    to: sonitgupta7@gmail.com
+                    to: 'sonitgupta7@gmail.com'
                 }
                 failure{
                     mail to: 'sonitgupta7@gmail.com' from: 'sonitgupta7@gmail.com'
