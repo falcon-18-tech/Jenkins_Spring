@@ -19,8 +19,8 @@ pipeline{
                     archiveArtifacts(artifacts: 'Jenkins_Spring/target/*.war', allowEmptyArchive: true)
                 }
             }
-		}
-		post{
+	}
+	post{
              success{
                     emailext attachPattern: "*target/*.war",
                     body: '''${SCRIPT, template="groovy-template"}''',
