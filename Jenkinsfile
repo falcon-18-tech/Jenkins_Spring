@@ -16,7 +16,7 @@ pipeline{
             }
             post{
                 success{
-                    archiveArtifacts(artifacts: 'Jenkins_Spring/target/*.war, allowEmptyArchive: true)
+                    archiveArtifacts(artifacts: 'Jenkins_Spring/target/*.war', allowEmptyArchive: true)
                 }
             }
             post{
